@@ -1,5 +1,3 @@
-# задание ГОТОВО
-
 class Case:
     def __init__(self, test_case_id, name, step_description, expected_result):
         self.test_case_id = test_case_id
@@ -13,13 +11,13 @@ class Case:
               f"\nОписание шага: {self.step_description}"
               f"\nОжидаемый результат: {self.expected_result}")
 
-class ExtendedCase(Case):
-    def __init__(self, test_case_id, name, step_description, expected_result, precondition: int, enviroment: int):
-        super().__init__(test_case_id, name, step_description, expected_result)
-        self.precondition = precondition #add type string
-        self.enviroment = enviroment #add type string
+class ExtendedCase(Case): # создал подкласс и добавил ему два новых атрибута с типом данных строка
+    def __init__(self, test_case_id, name, step_description, expected_result, precondition: str, enviroment: str):
+        super().__init__(test_case_id, name, step_description, expected_result) # вызвал конструктор через super()
+        self.precondition = precondition
+        self.enviroment = enviroment
 
-    def print_test_case_info(self):
+    def print_test_case_info(self): # переопределил метод: добавил печать новых атрибутов
         print(f"ID тест-кейса:  {self.test_case_id}"
               f"\nНазвание: {self.name}"
               f"\nОписание шага: {self.step_description}"
@@ -30,4 +28,4 @@ class ExtendedCase(Case):
 
 case = ExtendedCase('1', 'Наличие кнопки Принять', '1. Открыть вкладку приёма документов 2. Проверить наличие кнопки ', 'Кнопка доступна', 'Открыть сервис', 'Яндекс Браузер')
 
-case.print_test_case_info()
+case.print_test_case_info() # создал объект case и вызвал для него метод печати
